@@ -1,0 +1,57 @@
+#include <iostream>
+#include <cstring>
+
+class Exam {
+private:
+    char* studentSurname;
+    int ticketNumber;
+    int grade;
+
+public:
+    Exam() {
+        studentSurname = nullptr;
+        ticketNumber = 0;
+        grade = 0;
+    }
+
+    ~Exam() {
+        delete[] studentSurname;
+    }
+
+    void enterStudentSurname() {
+        char buffer[100];
+        std::cout << "Enter student's surname: ";
+        std::cin.getline(buffer, sizeof(buffer));
+        studentSurname = new char[std::strlen(buffer) + 1];
+        std::strcpy(studentSurname, buffer);
+    }
+
+    void enterTicketNumber() {
+        std::cout << "Enter ticket number: ";
+        std::cin >> ticketNumber;
+    }
+
+    void enterGrade() {
+        std::cout << "Enter grade: ";
+        std::cin >> grade;
+    }
+
+    void displayInfo() {
+        std::cout << "Student's surname: " << studentSurname << std::endl;
+        std::cout << "Ticket number: " << ticketNumber << std::endl;
+        std::cout << "Grade: " << grade << std::endl;
+    }
+};
+
+int main() {
+    Exam exam;
+
+    exam.enterStudentSurname();
+    exam.enterTicketNumber();
+    exam.enterGrade();
+
+    std::cout << "\nExam Information:\n";
+    exam.displayInfo();
+
+    return 0;
+}
