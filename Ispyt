@@ -1,57 +1,41 @@
 #include <iostream>
-#include <cstring>
 
-class Exam {
+class Ispyt {
 private:
-    char* studentSurname;
+    char name[50];
     int ticketNumber;
     int grade;
 
 public:
-    Exam() {
-        studentSurname = nullptr;
-        ticketNumber = 0;
-        grade = 0;
-    }
+    // Метод для введення даних про іспит
+    void enterData() {
+        std::cout << "Введіть ім'я студента: ";
+        std::cin.getline(name, sizeof(name));
 
-    ~Exam() {
-        delete[] studentSurname;
-    }
-
-    void enterStudentSurname() {
-        char buffer[100];
-        std::cout << "Enter student's surname: ";
-        std::cin.getline(buffer, sizeof(buffer));
-        studentSurname = new char[std::strlen(buffer) + 1];
-        std::strcpy(studentSurname, buffer);
-    }
-
-    void enterTicketNumber() {
-        std::cout << "Enter ticket number: ";
+        std::cout << "Введіть номер білету: ";
         std::cin >> ticketNumber;
-    }
 
-    void enterGrade() {
-        std::cout << "Enter grade: ";
+        std::cout << "Введіть оцінку: ";
         std::cin >> grade;
     }
 
-    void displayInfo() {
-        std::cout << "Student's surname: " << studentSurname << std::endl;
-        std::cout << "Ticket number: " << ticketNumber << std::endl;
-        std::cout << "Grade: " << grade << std::endl;
+    // Метод для виведення інформації про іспит
+    void displayInformation() {
+        std::cout << "Ім'я студента: " << name << std::endl;
+        std::cout << "Номер білету: " << ticketNumber << std::endl;
+        std::cout << "Оцінка: " << grade << std::endl;
     }
 };
 
 int main() {
-    Exam exam;
+    Ispyt exam;
 
-    exam.enterStudentSurname();
-    exam.enterTicketNumber();
-    exam.enterGrade();
+    // Введення даних про іспит
+    exam.enterData();
 
-    std::cout << "\nExam Information:\n";
-    exam.displayInfo();
+    // Виведення інформації про іспит
+    std::cout << "Інформація про іспит:" << std::endl;
+    exam.displayInformation();
 
     return 0;
 }
