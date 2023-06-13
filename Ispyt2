@@ -7,38 +7,35 @@ private:
     bool gender;
 
 public:
-    void changeCourse(int newCourse) {
-        course = newCourse;
+    // Метод для введення даних про студента
+    void enterData() {
+        std::cout << "Введіть ім'я студента: ";
+        std::cin.getline(name, sizeof(name));
+
+        std::cout << "Введіть курс студента: ";
+        std::cin >> course;
+
+        std::cout << "Введіть стать студента (0 - Жіноча, 1 - Чоловіча): ";
+        std::cin >> gender;
     }
 
-    void enterName() {
-        std::cout << "Enter student's name: ";
-        std::cin.getline(name, 50);
-    }
-
-    void enterGender() {
-        int genderInput;
-        std::cout << "Enter student's gender (0 - Female, 1 - Male): ";
-        std::cin >> genderInput;
-        gender = static_cast<bool>(genderInput);
-    }
-
-    void displayInfo() {
-        std::cout << "Student's name: " << name << std::endl;
-        std::cout << "Course: " << course << std::endl;
-        std::cout << "Gender: " << (gender ? "Male" : "Female") << std::endl;
+    // Метод для виведення інформації про студента
+    void displayInformation() {
+        std::cout << "Ім'я: " << name << std::endl;
+        std::cout << "Курс: " << course << std::endl;
+        std::cout << "Стать: " << (gender ? "Чоловіча" : "Жіноча") << std::endl;
     }
 };
 
 int main() {
     Student student;
 
-    student.enterName();
-    student.enterGender();
-    student.changeCourse(3);
+    // Введення даних про студента
+    student.enterData();
 
-    std::cout << "\nStudent Information:\n";
-    student.displayInfo();
+    // Виведення інформації про студента
+    std::cout << "Інформація про студента:" << std::endl;
+    student.displayInformation();
 
     return 0;
 }
